@@ -1,6 +1,8 @@
 package com.webshop.webservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,13 @@ public class ProductController {
 	public void saveProduct(@RequestBody Product product) {
 		
 		productService.saveProduct(product);
+		
+	}
+
+	@RequestMapping("/products/categories/{category}/{page}")
+	public Page<Product> getProductByName(@PathVariable String category,@PathVariable int page) {
+		
+		return productService.getProductsByCategory(category,new PageRequest(page-1,3));
 		
 	}
 	
