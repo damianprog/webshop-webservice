@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.webshop.webservice.entity.Product;
-import com.webshop.webservice.repositories.ProductRepositoryJpa;
+import com.webshop.webservice.jparepository.ProductRepositoryJpa;
 import com.webshop.webservice.repository.ProductRepository;
 
 @Service

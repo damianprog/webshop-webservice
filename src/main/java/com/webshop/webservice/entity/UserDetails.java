@@ -1,10 +1,13 @@
 package com.webshop.webservice.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,20 +29,12 @@ public class UserDetails {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "country")
-	private String country;
-	
-	@Column(name = "city")
-	private String city;
-
-	@Column(name = "street")
-	private String street;
-
-	@Column(name = "post_code")
-	private String postCode;
-
 	@Column(name = "phone")
 	private String phone;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	public UserDetails() {
 
@@ -51,6 +46,14 @@ public class UserDetails {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getFirstName() {
@@ -69,44 +72,12 @@ public class UserDetails {
 		this.lastName = lastName;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
 	}
 
 }

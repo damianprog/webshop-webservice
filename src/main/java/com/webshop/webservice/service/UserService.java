@@ -3,6 +3,7 @@ package com.webshop.webservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webshop.webservice.entity.Address;
 import com.webshop.webservice.entity.User;
 import com.webshop.webservice.entity.UserRole;
 import com.webshop.webservice.repository.UserReppository;

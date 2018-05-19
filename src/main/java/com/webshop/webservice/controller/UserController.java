@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webshop.webservice.entity.Address;
 import com.webshop.webservice.entity.User;
 import com.webshop.webservice.entity.UserRole;
 import com.webshop.webservice.service.UserService;
@@ -40,8 +41,7 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST,value="/userRoles")
 	public void saveUserRole(@RequestBody UserRole userRole) {
-		System.out.println("######################## " + userRole.getId() + " " + userRole.getRoleId());
 		userService.saveUserRole(userRole);
 	}
-
+		
 }
