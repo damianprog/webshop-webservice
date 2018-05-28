@@ -2,12 +2,11 @@ package com.webshop.webservice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,16 +24,18 @@ public class Rating {
 	@Column(name = "rate")
 	private int rate;
 
-	@Column(name = "product_id")
-	private int productId;
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
 
-	@Column(name = "user_id")
-	private int userId;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Rating() {
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -49,6 +50,22 @@ public class Rating {
 
 	public void setRate(int rate) {
 		this.rate = rate;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

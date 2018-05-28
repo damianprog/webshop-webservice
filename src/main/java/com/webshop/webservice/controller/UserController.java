@@ -26,18 +26,26 @@ public class UserController {
 	}
 
 	@RequestMapping("/users/names/{userName}")
-	public User getUserById(@PathVariable String userName) {
+	public User getUserByUserName(@PathVariable String userName) {
 
 		return userService.getUserByUserName(userName);
 
 	}
 
+	@RequestMapping(method=RequestMethod.POST,value="/users")
+	public User saveUser(@RequestBody User user) {
+
+		return userService.saveUser(user);
+
+	}
+	
 	@RequestMapping(method=RequestMethod.PUT,value="/users")
-	public void saveUser(@RequestBody User user) {
+	public void updateUser(@RequestBody User user) {
 
 		userService.saveUser(user);
 
 	}
+	
 	
 	@RequestMapping(method=RequestMethod.POST,value="/userRoles")
 	public void saveUserRole(@RequestBody UserRole userRole) {

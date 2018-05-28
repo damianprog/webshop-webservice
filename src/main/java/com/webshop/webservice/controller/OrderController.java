@@ -35,9 +35,4 @@ public class OrderController {
 		return orderService.getOrdersByUserId(userId);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,value="/orders/creditCards")
-	public void saveCreditCard(@RequestBody CreditCard creditCard) {
-		orderService.saveCreditCard(creditCard);
-	}
-	
 }

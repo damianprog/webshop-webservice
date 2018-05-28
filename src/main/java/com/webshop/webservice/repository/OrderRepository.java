@@ -6,8 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.webshop.webservice.entity.Order;
 
-public interface OrderRepository extends CrudRepository<Order,Integer>{
+public interface OrderRepository extends CrudRepository<Order, Integer> {
 
 	List<Order> findAllByUserId(int userId);
-	
+
 }

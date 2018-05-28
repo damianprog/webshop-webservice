@@ -50,7 +50,7 @@ public class User {
 	@JoinColumn(name = "user_details_id")
 	private UserDetails userDetails;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	@JsonManagedReference
 	private List<Order> orders;

@@ -14,7 +14,7 @@ public class UserService {
 
 	@Autowired
 	UserReppository userRepository;
-	
+
 	@Autowired
 	UserRoleRepository userRoleRepository;
 
@@ -30,14 +30,20 @@ public class UserService {
 
 	}
 
-	public void saveUser(User user) {
+	public User saveUser(User user) {
+
+		return userRepository.save(user);
+
+	}
+
+	public void updateUser(User user) {
 
 		userRepository.save(user);
 
 	}
 
 	public void saveUserRole(UserRole userRole) {
-		
+
 		userRoleRepository.save(userRole);
 	}
 

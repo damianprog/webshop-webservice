@@ -40,7 +40,7 @@ public class ProductController {
 	}
 
 	@RequestMapping("/products/categories/{category}/{page}")
-	public Page<Product> getProductByName(@PathVariable String category,@PathVariable int page) {
+	public Page<Product> getProductsByCategory(@PathVariable String category,@PathVariable int page) {
 		
 		return productService.getProductsByCategory(category,new PageRequest(page-1,3));
 		

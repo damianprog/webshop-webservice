@@ -46,12 +46,16 @@ public class Order {
 	@Column(name = "order_date")
 	private String orderDate;
 
-	@Column(name = "delivery_date")
-	private String deliveryDate;
-
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "credit_card_id")
 	private CreditCard creditCard;
+
+	@Column(name = "overall_value")
+	private double overallValue;
+
+	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinColumn(name = "delivery_id")
+	private Delivery delivery;
 
 	public Order() {
 
@@ -89,14 +93,6 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-	public String getDeliveryDate() {
-		return deliveryDate;
-	}
-
-	public void setDeliveryDate(String deliveryDate) {
-		this.deliveryDate = deliveryDate;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -111,6 +107,22 @@ public class Order {
 
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
+	}
+
+	public double getOverallValue() {
+		return overallValue;
+	}
+
+	public void setOverallValue(double overallValue) {
+		this.overallValue = overallValue;
+	}
+
+	public Delivery getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(Delivery delivery) {
+		this.delivery = delivery;
 	}
 
 }

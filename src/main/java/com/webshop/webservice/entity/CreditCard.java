@@ -8,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
@@ -44,14 +47,22 @@ public class CreditCard {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "address_id")
-	private Address billingAddress;
+	private Address address;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	@JsonBackReference
+	private User user;
+
+	@Column(name = "isItDefault")
+	private boolean isItDefault;
 
 	public CreditCard() {
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -117,12 +128,27 @@ public class CreditCard {
 	}
 
 	public Address getAddress() {
-		return billingAddress;
+		return address;
 	}
 
 	public void setAddress(Address address) {
-		this.billingAddress = address;
+		this.address = address;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public boolean isItDefault() {
+		return isItDefault;
+	}
+
+	public void setItDefault(boolean isItDefault) {
+		this.isItDefault = isItDefault;
 	}
 
 }
-
