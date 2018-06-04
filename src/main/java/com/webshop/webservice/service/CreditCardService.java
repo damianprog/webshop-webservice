@@ -14,8 +14,8 @@ public class CreditCardService {
 	@Autowired
 	private CreditCardRepository creditCardRepository;
 
-	public void saveCreditCard(CreditCard creditCard) {
-		creditCardRepository.save(creditCard);
+	public CreditCard saveCreditCard(CreditCard creditCard) {
+		return creditCardRepository.save(creditCard);
 	}
 
 	public CreditCard getCreditCardById(int creditCardId) {

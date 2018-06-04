@@ -10,4 +10,6 @@ public interface OrderRepository extends CrudRepository<Order, Integer> {
 
 	List<Order> findAllByUserId(int userId);
 
+	List<Order> findAllByCreditCardId(int creditCardId);
+
 }

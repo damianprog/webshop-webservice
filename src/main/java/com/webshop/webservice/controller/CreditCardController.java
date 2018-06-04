@@ -39,8 +39,8 @@ public class CreditCardController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST,value="/creditCards")
-	public void saveCreditCard(@RequestBody CreditCard creditCard) {
-		creditCardService.saveCreditCard(creditCard);
+	public CreditCard saveCreditCard(@RequestBody CreditCard creditCard) {
+		return creditCardService.saveCreditCard(creditCard);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE,value="/creditCards/{creditCardId}/delete")

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class ReviewController {
 	
 	@RequestMapping("/products/{productId}/reviews/{page}")
 	public Page<Review> getReviewsByProductId(@PathVariable("productId") int productId,@PathVariable("page") int page) {
-		return reviewService.getReviewsByProductIdPageable(productId,new PageRequest(page-1,10));
+		return reviewService.getReviewsByProductIdPageable(productId,new PageRequest(page-1,10,Sort.Direction.DESC,"id"));
 	}
 	
 	@RequestMapping("/reviews")

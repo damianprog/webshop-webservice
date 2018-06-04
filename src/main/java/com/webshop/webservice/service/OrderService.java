@@ -25,5 +25,9 @@ public class OrderService {
 	public List<Order> getOrdersByUserId(int userId) {
 		return orderRepository.findAllByUserId(userId);
 	}
+
+	public List<Order> getOrdersByCreditCardId(int creditCardId) {
+		return orderRepository.findAllByCreditCardId(creditCardId);
+	}
 	
 }

@@ -46,7 +46,7 @@ public class Order {
 	@Column(name = "order_date")
 	private String orderDate;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "credit_card_id")
 	private CreditCard creditCard;
 

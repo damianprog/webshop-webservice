@@ -30,6 +30,11 @@ public class OrderController {
 		return orderService.getOrderById(id);
 	}
 
+	@RequestMapping("/orders/creditCards/{creditCardId}")
+	public List<Order> getOrdersByCreditCardId(@PathVariable int creditCardId) {
+		return orderService.getOrdersByCreditCardId(creditCardId);
+	}
+	
 	@RequestMapping("/users/{userId}/orders")
 	public List<Order> getOrdersByUserId(@PathVariable int userId) {
 		return orderService.getOrdersByUserId(userId);
